@@ -1,0 +1,9 @@
+{% for tweet in object_list %}
+    <li>
+      <a href={% url 'update_tweet' pk=tweet.id %}>{{ tweet.tweet_text }}</a>
+      <form action="{% url 'delete_tweet' tweet.pk %}" method="post">
+          {% csrf_token %}
+          <input type="submit" value="Delete" />
+      </form>
+    </li>
+{% endfor %}
